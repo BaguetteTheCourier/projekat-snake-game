@@ -6,27 +6,36 @@
 int i, j, visina = 20, duzina = 20, poeni=0, gameover; 
 int x, y, vocex, vocey, kretanje;
 
-int main_menu() //nece da radi main menu kako treba za sad
+/*int main_menu() 
 {
 	system("cls");
-	char odl;
+	int odl;
+	P:
 	printf("SNAKE GAME \n");
 	printf(" \n");
-	printf("pretisni P da igras \n");
-	printf("pretisni E da izadjes iz igre \n");
-	scanf("%c", &odl);
-	if ('p' == odl)
+	printf("1. igraj \n");
+	printf("2. izadji iz igre \n");
+	scanf("%d", &odl);
+	while ( odl != 2 )
 	{
-		gameover=0;
-		return 1;
-	}
-	else if ('e' == odl)
-	{
-		gameover=1;
-		return 0;
+		if (odl == 1)
+		{
+			gameover = 0;
+			break;
+		}
+		else if ( odl == 2)
+		{
+			gameover = 1;
+			break;
+		}
+		else 
+		{
+			printf("nevazeca komanda \n");
+			goto P;
+		}
 	}
 	
-}
+}*/
 
 void setup()
 {
@@ -149,13 +158,46 @@ void funkcionisanje()
 
 
 void main() {
-	int m, n;
 	setup();
-	while (!gameover)
+	int m, n;
+	system("cls");
+	int odl;
+	printf("SNAKE GAME \n");
+	printf(" \n");
+	printf("1. igraj \n");
+	printf("2. izadji iz igre \n");
+	P:
+	scanf("%d", &odl);
+	while ( odl != 2 )
 	{
-		main_menu();
+		if (odl == 1)
+		{
+			while (!gameover)
+		{
+			crtanje();
+			kontrole();
+			funkcionisanje();
+		}
+			break;
+		}
+		else if ( odl == 2)
+		{
+			printf("izasao si iz igre \n");
+			gameover = 1;
+			break;
+		}
+		else 
+		{
+			printf("nevazeca komanda, pokusaj ponovo \n");
+			goto P;
+		}
+	}
+	//setup();
+	//main_menu();
+	/*while (!gameover)
+	{
 		crtanje();
 		kontrole();
 		funkcionisanje();
-	}
+	}*/
 }
