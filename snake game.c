@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <unistd.h>
-
+#include <time.h>
 int i, j, visina = 20, duzina = 20, poeni=0, gameover; 
 int x, y, vocex, vocey, kretanje;
 
-/*int main_menu() 
+void main_menu() 
 {
 	system("cls");
 	int odl;
@@ -16,24 +16,48 @@ int x, y, vocex, vocey, kretanje;
 	printf("1. igraj \n");
 	printf("2. izadji iz igre \n");
 	scanf("%d", &odl);
-	while ( odl != 2 )
-	{
-		if (odl == 1)
+	switch (odl)
 		{
-			gameover = 0;
-			break;
+			case 1:
+				gameover = 0;
+				break;
+			case 2:
+				gameover = 1;
+				break;
+			default:
+				printf("nevazeca komanda \n");
+				goto P;
+				break;
 		}
-		else if ( odl == 2)
+	
+}
+
+/*void main_menu v2() 
+{
+	system("cls");
+	int odl;
+	P:
+	printf("SNAKE GAME \n");
+	printf(" \n");
+	printf("1. igraj \n");
+	printf("2. izadji iz igre \n");
+	scanf("%d", &odl);
+	switch (odl)
 		{
-			gameover = 1;
-			break;
+			case 1:
+				printf("Izaberi tezinu: \n");
+				printf(" ");
+				printf("1. easy");
+				printf("2. normal");
+				printf("3. hard");
+			case 2:
+				gameover = 1;
+				break;
+			default:
+				printf("nevazeca komanda \n");
+				goto P;
+				break;
 		}
-		else 
-		{
-			printf("nevazeca komanda \n");
-			goto P;
-		}
-	}
 	
 }*/
 
@@ -116,7 +140,10 @@ void kontrole()
 
 void funkcionisanje()
 {
-	sleep(0.9);
+	float sleep_interval;
+	ponovo:
+	sleep_interval=1.5-1.0*poeni/100;
+	sleep(sleep_interval);
 	switch(kretanje)
 	{
 	case 1:
@@ -138,6 +165,7 @@ void funkcionisanje()
 	{
 		gameover=1;
 	}
+	srand((unsigned)time(0));
 	if (x == vocex && y == vocey)
 	{
 		label3:
@@ -153,51 +181,21 @@ void funkcionisanje()
 				goto label4;
 			}
 			poeni+=10;
+			goto ponovo;
 	}
 }
 
 
-void main() {
+void main() 
+{
 	setup();
 	int m, n;
-	system("cls");
-	int odl;
-	printf("SNAKE GAME \n");
-	printf(" \n");
-	printf("1. igraj \n");
-	printf("2. izadji iz igre \n");
-	P:
-	scanf("%d", &odl);
-	while ( odl != 2 )
-	{
-		if (odl == 1)
-		{
-			while (!gameover)
-		{
-			crtanje();
-			kontrole();
-			funkcionisanje();
-		}
-			break;
-		}
-		else if ( odl == 2)
-		{
-			printf("izasao si iz igre \n");
-			gameover = 1;
-			break;
-		}
-		else 
-		{
-			printf("nevazeca komanda, pokusaj ponovo \n");
-			goto P;
-		}
-	}
-	//setup();
-	//main_menu();
-	/*while (!gameover)
+	setup();
+	main_menu();
+	while (!gameover)
 	{
 		crtanje();
 		kontrole();
 		funkcionisanje();
-	}*/
+	}
 }
