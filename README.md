@@ -5,3 +5,5 @@
 26 maj - main menu zavrsen, odradjen u sastavu main funkcije
 
 31 maj - dodat sleep interval, zapoceta nova verzija main menu, radi se na spawnovanju voca unutar matrice
+
+7 jun - zavrsen bug fix, odustala sam od novog main menua
