@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <time.h>
 int i, j, visina = 20, duzina = 20, poeni=0, gameover; 
-int x, y, vocex, vocey, kretanje;
+int x, y, vocex, vocey, kretanje, odl1, odl2;
 
 void main_menu() 
 {
@@ -32,48 +32,19 @@ void main_menu()
 	
 }
 
-/*void main_menu v2() 
-{
-	system("cls");
-	int odl;
-	P:
-	printf("SNAKE GAME \n");
-	printf(" \n");
-	printf("1. igraj \n");
-	printf("2. izadji iz igre \n");
-	scanf("%d", &odl);
-	switch (odl)
-		{
-			case 1:
-				printf("Izaberi tezinu: \n");
-				printf(" ");
-				printf("1. easy");
-				printf("2. normal");
-				printf("3. hard");
-			case 2:
-				gameover = 1;
-				break;
-			default:
-				printf("nevazeca komanda \n");
-				goto P;
-				break;
-		}
-	
-}*/
-
 void setup()
 {
 	gameover = 0;
 	x = duzina/2;
 	y = visina/2;
 	label1:
-		vocex = rand()%20;
+		vocex = rand()%18+1;
 		if (vocex == 0)
 		{
 			goto label2;
 		}
 	label2:
-		vocey = rand()%20;
+		vocey = rand()%18+1;
 		if (vocey == 0)
 		{
 			goto label1;
@@ -169,13 +140,13 @@ void funkcionisanje()
 	if (x == vocex && y == vocey)
 	{
 		label3:
-			vocex=rand()%20;
+			vocex=rand()%18+1;
 			if (vocex == 0)
 			{
 				goto label3;
 			}
 		label4:
-			vocey=rand()%20;
+			vocey=rand()%18+1;
 			if (vocey == 0)
 			{
 				goto label4;
@@ -188,7 +159,6 @@ void funkcionisanje()
 
 void main() 
 {
-	setup();
 	int m, n;
 	setup();
 	main_menu();
